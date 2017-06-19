@@ -54,17 +54,15 @@ baseball = Item(name="baseball", users=alex)
 bid1 = Bid(price=2, users=cassie, item=baseball)
 bid2 = Bid(price=3, users=sandra, item=baseball)
 
-session.add_all([cassie, alex, sandra, baseball, bid1, bid2])
-session.commit()
+# session.add_all([cassie, alex, sandra, baseball, bid1, bid2])
+# session.commit()
 
-for a in alex.item:
-    print (item.name)
+for bid in baseball.bid:
+    print (baseball.name + " " + str(bid.price) + " " + bid.users.username)
 
-for a in alex.item:
-    print (alex.item.name)
+print (session.query(Bid.price, Bid.users).join(User).filter(Item.name == "baseball").order_by(Bid.price.desc()).all())
 
-    # I get errors for both of these last statements.  help!!  The first error is NameError: name 'item' is not defined
-    # the second error is AttributeError: 'InstrumentedList' object has no attribute 'name'
+# hi emily, still having trouble.  Trying to pull out the user from the bid in my session.query - i've tried everything Bid.users.username, Bid.users etc.  I either get a weird set of True/False or I get an error.
 
 
 
